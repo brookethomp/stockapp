@@ -3,12 +3,11 @@ const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
 const path = require('path');
 
-// MongoDB connection string
 const mongoURI = process.env.MONGO_URI || "mongodb+srv://stockuser:Stocks123@cluster0.smdvj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 if (!mongoURI) {
     console.error('MONGO_URI is not set');
-    process.exit(1); // Exit if no URI is provided
+    process.exit(1);
 }
 
 const client = new MongoClient(mongoURI);
@@ -16,25 +15,22 @@ const client = new MongoClient(mongoURI);
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middleware
 app.use(bodyParser.urlencoded({ extended: true })); // Parse form data
 app.use(express.static(path.join(__dirname, 'public')));
 
 let collection;
 
-// Connect to MongoDB
+// Connecting to MongoDB
 client.connect().then(() => {
     const db = client.db('Stock');
     collection = db.collection('PublicCompanies');
     console.log('Connected to MongoDB');
 }).catch(err => console.error('Failed to connect to MongoDB:', err));
 
-// Home view (form)
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Process view
 app.get('/process', async (req, res) => {
     const { query, type } = req.query;
 
@@ -68,7 +64,6 @@ app.get('/process', async (req, res) => {
     }
 });
 
-// Start the server
 app.listen(port, () => {
     console.log(`Server is running on http://localhost:${port}`);
 });
