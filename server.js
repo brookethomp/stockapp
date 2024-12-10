@@ -3,9 +3,15 @@ const bodyParser = require('body-parser');
 const { MongoClient } = require('mongodb');
 const path = require('path');
 
-// MongoDB connection
-const uri = "mongodb+srv://stockuser:Stocks123@cluster0.smdvj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-const client = new MongoClient(uri);
+// MongoDB connection string
+const mongoURI = process.env.MONGO_URI || "mongodb+srv://stockuser:Stocks123@cluster0.smdvj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+
+if (!mongoURI) {
+    console.error('MONGO_URI is not set');
+    process.exit(1); // Exit if no URI is provided
+}
+
+const client = new MongoClient(mongoURI);
 
 const app = express();
 const port = process.env.PORT || 3000;
