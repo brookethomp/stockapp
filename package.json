@@ -1,0 +1,14 @@
+{
+    "name": "stock-app",
+    "version": "1.0.0",
+    "description": "A simple app to populate MongoDB from a CSV file",
+    "main": "readCompanies.js",
+    "scripts": {
+        "start": "node readCompanies.js"
+    },
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "mongodb": "^6.11.0"
+    }
+}
