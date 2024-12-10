@@ -6,6 +6,10 @@
     "scripts": {
         "start": "node readCompanies.js"
     },
+    "repository": {
+    "type": "git",
+    "url": "https://stock-app-20-9ad83cba3c72.herokuapp.com/"
+    },
     "author": "",
     "license": "ISC",
     "dependencies": {
