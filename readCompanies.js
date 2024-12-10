@@ -2,7 +2,7 @@ const fs = require('fs');
 const { MongoClient } = require('mongodb');
 
 // MongoDB connection URI
-const uri = "mongodb+srv://shelfuser:Soccer123@cluster0.smdvj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const uri = "mongodb+srv://stockuser:Stocks123@cluster0.smdvj.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
 
 // File path for the CSV
 const filePath = './companies.csv';
